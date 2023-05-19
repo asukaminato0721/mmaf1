@@ -8,12 +8,11 @@ Download the Mathematica documents. Set the path to `mmaf1.path`
 
 ## Usage
 
-1. hightlight the function.
+1. hightlight/put cursor at the function.
 2. <kbd>F1</kbd>
 
 ## TODO
 
-- [ ] query word at cursor directly
 - [ ] Integrate into other extensions
 
 ## Why js

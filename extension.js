@@ -12,16 +12,17 @@ const { map } = require("./symbols2letter")
  */
 function activate(context) {
 	let disposable = vscode.commands.registerCommand('mmaf1.helloWorld', function () {
-		const editor = vscode.window.activeTextEditor;
-		const selection = editor.selection;
-		if (selection && !selection.isEmpty) {
-			const selectionRange = new vscode.Range(selection.start.line, selection.start.character, selection.end.line, selection.end.character);
-			const highlighted = editor.document.getText(selectionRange);
-			// check for symbols first, like the `map.get(key).or_else(default)`
-			const toQuery = map.get(highlighted) || highlighted;
-			for (const f of query(toQuery, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
-				cp.spawn("wolframplayer", [f]);
-			}
+		const highlighted = (function () {
+			const editor = vscode.window.activeTextEditor;
+			const selection = editor.selection;
+			return editor.document.getText(
+				(selection && !selection.isEmpty)
+					? new vscode.Range(selection.start.line, selection.start.character, selection.end.line, selection.end.character)
+					: editor.document.getWordRangeAtPosition(editor.selection.active)
+			)
+		})();
+		for (const f of query(map.get(highlighted) || highlighted, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
+			cp.spawn("wolframplayer", [f]);
 		}
 	});
 
