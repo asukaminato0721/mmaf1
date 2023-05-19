@@ -1,6 +1,6 @@
 # MmaF1
 
-A very simple plugin to f1 in your vscode. PoC.
+A deadly simple plugin to f1 in your vscode. PoC.
 
 ## Prerequirement
 
@@ -13,6 +13,8 @@ Download the Mathematica documents. Set the path to `mmaf1.path`
 
 ## TODO
 
+- [ ] query word at cursor directly
+- [ ] query for symbols `=` `:=` `==` `===` `:^=` `_` `__` `___` `..` `...` `|->` ...
 - [ ] Integrate into other extensions
 
 ## Why js
