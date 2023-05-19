@@ -17,7 +17,7 @@ function activate(context) {
 			const selectionRange = new vscode.Range(selection.start.line, selection.start.character, selection.end.line, selection.end.character);
 			const highlighted = editor.document.getText(selectionRange);
 			for (const f of query(highlighted, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
-				cp.execSync(`wolframplayer ${f}`);
+				cp.spawn("wolframplayer", [f]);
 			}
 		}
 	});
