@@ -3,6 +3,7 @@
 const vscode = require('vscode');
 const cp = require("child_process")
 const { query } = require("./walkdir")
+const { map } = require("./symbols2letter")
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
@@ -16,7 +17,9 @@ function activate(context) {
 		if (selection && !selection.isEmpty) {
 			const selectionRange = new vscode.Range(selection.start.line, selection.start.character, selection.end.line, selection.end.character);
 			const highlighted = editor.document.getText(selectionRange);
-			for (const f of query(highlighted, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
+			// check for symbols first, like the `map.get(key).or_else(default)`
+			const toQuery = map.get(highlighted) || highlighted;
+			for (const f of query(toQuery, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
 				cp.spawn("wolframplayer", [f]);
 			}
 		}
