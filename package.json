@@ -1,0 +1,44 @@
+{
+  "name": "mmaf1",
+  "displayName": "mmaf1",
+  "description": "f1 to docs",
+  "version": "0.0.1",
+  "repository": {
+    "url": "whatever"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Keymaps"
+  ],
+  "activationEvents": [
+    "onCommand:mmaf1.helloWorld"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mmaf1.helloWorld",
+        "title": "F1"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "mmaf1.helloWorld",
+        "key": "f1"
+      }
+    ],
+    "configuration": {
+      "title": "MmaF1",
+      "properties": {
+        "mmaf1.path": {
+          "type": "string",
+          "default": "/path/to/your/doc",
+          "description": "Path to local doc"
+        }
+      }
+    }
+  }
+}
