@@ -39,6 +39,20 @@
           "description": "Path to local doc"
         }
       }
-    }
+    },
+    "languages": [
+      {
+        "id": "wolfram",
+        "aliases": [
+          "Wolfram Language"
+        ],
+        "extensions": [
+          ".wls",
+          ".wlnb",
+          ".wl",
+          ".nb"
+        ]
+      }
+    ]
   }
 }
