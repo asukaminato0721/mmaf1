@@ -21,7 +21,7 @@ function activate(context) {
 					: editor.document.getWordRangeAtPosition(editor.selection.active)
 			)
 		})();
-		for (const f of query(map.get(highlighted) || highlighted, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
+		for (const f of query(vscode.workspace.getConfiguration().get('mmaf1.path'), map.get(highlighted) || highlighted)) {
 			cp.spawn(vscode.workspace.getConfiguration().get('mmaf1.bin'), [f]);
 		}
 	});
