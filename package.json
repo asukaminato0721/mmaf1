@@ -37,6 +37,11 @@
           "type": "string",
           "default": "/path/to/your/doc",
           "description": "Path to local doc"
+        },
+        "mmaf1.bin": {
+          "type": "string",
+          "default": "/path/to/your/binary",
+          "description": "Path to your mathematica binary or wolframplayer binary"
         }
       }
     },

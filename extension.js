@@ -22,7 +22,7 @@ function activate(context) {
 			)
 		})();
 		for (const f of query(map.get(highlighted) || highlighted, vscode.workspace.getConfiguration().get('mmaf1.path'))) {
-			cp.spawn("wolframplayer", [f]);
+			cp.spawn(vscode.workspace.getConfiguration().get('mmaf1.bin'), [f]);
 		}
 	});
 
