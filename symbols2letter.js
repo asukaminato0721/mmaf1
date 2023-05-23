@@ -25,7 +25,7 @@ module.exports = {
 			'*=': 'TimesBy',
 			'/=': 'DivideBy',
 			'..': 'Repeated',
-			'...': 'ReplacedNull',
+			'...': 'RepeatedNull',
 			'->': 'Rule',
 			'|->': 'Function',
 			':>': 'RuleDelayed',
