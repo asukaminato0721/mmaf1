@@ -21,9 +21,20 @@ function activate(context) {
 					: editor.document.getWordRangeAtPosition(editor.selection.active)
 			)
 		})();
-		for (const f of query(vscode.workspace.getConfiguration().get('mmaf1.path'), map.get(highlighted) || highlighted)) {
-			cp.spawn(vscode.workspace.getConfiguration().get('mmaf1.bin'), [f]);
+		const names = map.get(highlighted) || highlighted;
+		/**
+		 * @param {string} name
+		 */
+		function queryName(name) {
+			for (const f of query(vscode.workspace.getConfiguration().get('mmaf1.path'), name)) {
+				cp.spawn(vscode.workspace.getConfiguration().get('mmaf1.bin'), [f]);
+			}
 		}
+		if (Array.isArray(names)) {
+			names.forEach(queryName);
+			return
+		}
+		queryName(names)
 	});
 
 	context.subscriptions.push(disposable);
