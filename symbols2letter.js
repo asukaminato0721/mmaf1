@@ -74,7 +74,7 @@ module.exports = {
 			// waiting for PR :)
 		}
 	).map(
-		([k, v]) => Array.isArray(v) ? [k, v] : [k, [v]]
+		([k, v]) => [k, Array.isArray(v) ? v : [v]]
 	)
 	)
 }
