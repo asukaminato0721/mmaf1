@@ -16,6 +16,7 @@ module.exports = {
 			'-': ['Minus', 'Subtract'],
 			'*': 'Multiply',
 			'/': 'Divide',
+			'^': 'Power',
 			'/.': 'Replace',
 			'//.': 'ReplaceAll',
 			'/:': ['TagSet', 'TagSetDelayed'],
@@ -63,7 +64,17 @@ module.exports = {
 			'**': 'NonCommutativeMultiply',
 			'.': 'Dot',
 			'--': ['Decremant', 'PreDrement'],
+			'[[': 'Part',
+			']]': 'Part',
+			'#': 'Slot',
+			'##': 'SlotSequence',
+			'%': 'Out',
+			'%%': 'Out',
+			'%%%': 'Out', // make 3 is enough for the case.
 			// waiting for PR :)
 		}
-	))
+	).map(
+		([k, v]) => Array.isArray(v) ? [k, v] : [k, [v]]
+	)
+	)
 }

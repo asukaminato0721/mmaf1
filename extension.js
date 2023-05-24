@@ -21,7 +21,6 @@ function activate(context) {
 					: editor.document.getWordRangeAtPosition(editor.selection.active)
 			)
 		})();
-		const names = map.get(highlighted) || highlighted;
 		/**
 		 * @param {string} name
 		 */
@@ -30,11 +29,7 @@ function activate(context) {
 				cp.spawn(vscode.workspace.getConfiguration().get('mmaf1.bin'), [f]);
 			}
 		}
-		if (Array.isArray(names)) {
-			names.forEach(queryName);
-			return
-		}
-		queryName(names)
+		(map.get(highlighted) || [highlighted]).forEach(queryName);
 	});
 
 	context.subscriptions.push(disposable);
