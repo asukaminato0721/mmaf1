@@ -71,6 +71,7 @@ module.exports = {
 			'%': 'Out',
 			'%%': 'Out',
 			'%%%': 'Out', // make 3 is enough for the case.
+			':': 'Pattern',
 			// waiting for PR :)
 		}
 	).map(
