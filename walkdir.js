@@ -1,21 +1,21 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 const path = require("path");
 
 /**
  * 
  * @param {string} folder 
  * @param {string} fnName
- * @returns {Generator<string>}
+ * @returns {AsyncGenerator<string>}
  */
-function* query(folder, fnName) {
-    if (!fs.existsSync(folder)) {
+async function* query(folder, fnName) {
+    if (!(fs.access(folder, fs.constants.F_OK | fs.constants.R_OK).then(() => true).catch(() => false))) {
         return;
     }
-    const entries = fs.readdirSync(folder);
+    const entries = await fs.readdir(folder);
     for (const entry of entries) {
         const fullPath = path.join(folder, entry);
 
-        if (fs.statSync(fullPath).isDirectory()) {
+        if ((await fs.stat(fullPath)).isDirectory()) {
             yield* query(fullPath, fnName);
         } else if (path.basename(fullPath, ".nb") === fnName) {
             yield fullPath;

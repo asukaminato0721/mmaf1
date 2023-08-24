@@ -10,7 +10,7 @@ const { map } = require("./symbols2letter")
 /**
  * @param {vscode.ExtensionContext} context
  */
-function activate(context) {
+async function activate(context) {
 	let disposable = vscode.commands.registerCommand('mmaf1.helloWorld', function () {
 		const highlighted = (function () {
 			const editor = vscode.window.activeTextEditor;
@@ -24,8 +24,8 @@ function activate(context) {
 		/**
 		 * @param {string} name
 		 */
-		function queryName(name) {
-			for (const f of query(vscode.workspace.getConfiguration().get('mmaf1.path'), name)) {
+		async function queryName(name) {
+			for await (const f of query(vscode.workspace.getConfiguration().get('mmaf1.path'), name)) {
 				cp.spawn(vscode.workspace.getConfiguration().get('mmaf1.bin'), [f]);
 			}
 		}
