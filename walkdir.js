@@ -11,13 +11,12 @@ async function* query(folder, fnName) {
     if (!(fs.access(folder, fs.constants.F_OK | fs.constants.R_OK).then(() => true).catch(() => false))) {
         return;
     }
-    const entries = await fs.readdir(folder);
-    for (const entry of entries) {
-        const fullPath = path.join(folder, entry);
-
-        if ((await fs.stat(fullPath)).isDirectory()) {
+    for await (const entry of await fs.opendir(folder)) {
+        const fullPath = path.join(folder, entry.name);
+        if (entry.isDirectory()) {
             yield* query(fullPath, fnName);
-        } else if (path.basename(fullPath, ".nb") === fnName) {
+        }
+        if (entry.isFile() && path.basename(entry.name, ".nb") === fnName) {
             yield fullPath;
         }
     }

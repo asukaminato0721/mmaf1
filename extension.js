@@ -12,7 +12,7 @@ const { map } = require("./symbols2letter")
  */
 async function activate(context) {
 	let disposable = vscode.commands.registerCommand('mmaf1.helloWorld', function () {
-		const highlighted = (function () {
+		const highlighted = (() => {
 			const editor = vscode.window.activeTextEditor;
 			const selection = editor.selection;
 			return editor.document.getText(
