@@ -71,8 +71,8 @@ module.exports = {
 			'%': 'Out',
 			'%%': 'Out',
 			'%%%': 'Out', // make 3 is enough for the case.
-			':': 'Pattern',
-			'_.': 'Optional', // The special form s_. is equivalent to Optional[s_] https://reference.wolfram.com/language/ref/Optional.html
+			':': ['Pattern', 'Optional'],
+			'_.': ['Default', 'Optional'], // The special form s_. is equivalent to Optional[s_] https://reference.wolfram.com/language/ref/Optional.html
 			// waiting for PR :)
 		}
 	).map(
