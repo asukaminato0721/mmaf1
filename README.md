@@ -4,7 +4,7 @@ A deadly simple plugin to f1 in your vscode. PoC.
 
 ## Prerequirement
 
-Download the Mathematica documents. Set the path to `mmaf1.path`
+Download the [Mathematica documents](https://www.wolfram.com/download-center/mathematica/) . Set the path to `mmaf1.path`
 
 Set the mathematica binary/wolframplayer binary to `mmaf1.bin`
 
